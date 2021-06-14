@@ -18,24 +18,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'j2objc/Classes/**/*'
+  s.source_files = 'j2objc/**/*'
   
-  s.prepare_command = <<-CMD
-      echo 'fetching j2objc.framework'
-      curl -OL 'https://diyalog.im/app/pkgs/ios_frameworks/j2objc/1.0.2/j2objc.zip'
-      rm -fr 'j2objc.framework'
-      echo 'unzipping j2objc.framework'
-      unzip -o -q j2objc.zip
-      echo 'cleaning files'
-      rm j2objc.zip
-    CMD
-
-  s.preserve_paths = 'j2objc'
-  s.vendored_frameworks =  'j2objc.framework'
-  
-  s.xcconfig = {
-     "SWIFT_INCLUDE_PATHS" => "$(PROJECT_DIR)/Pods/j2objc",
-     "FRAMEWORK_SEARCH_PATHS" => "$(PROJECT_DIR)/Pods/j2objc"
-  }
   
 end
