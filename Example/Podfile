@@ -1,0 +1,6 @@
+use_frameworks!
+target 'j2objc_Tests' do
+  pod 'j2objc', :path => '../'
+  
+  
+end
