@@ -18,7 +18,9 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'j2objc/**/*'
+  s.public_header_files = "j2objc/j2objc.framework/Headers/*.h"
+  s.source_files     = "j2objc/j2objc/Headers/*.h"
+
   
   s.prepare_command = <<-CMD
       echo 'fetching j2objc.framework'
@@ -31,7 +33,5 @@ Pod::Spec.new do |s|
     CMD
 
   s.vendored_frameworks = 'j2objc.framework'
-
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '' }
   
 end
