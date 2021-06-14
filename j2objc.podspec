@@ -31,5 +31,7 @@ Pod::Spec.new do |s|
     CMD
 
   s.vendored_frameworks = 'j2objc.framework'
+
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '' }
   
 end
