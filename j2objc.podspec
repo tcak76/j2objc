@@ -8,23 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name             = 'j2objc'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of j2objc.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
+  s.version          = '1.0.2'
+  s.summary          = 'Google j2objc framework that customized for DiyalogEngine.'
   s.homepage         = 'https://github.com/tcak76/j2objc'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'tcak76' => 'tcak76@users.noreply.github.com' }
+  s.author           = { 'Diyalog' => 'tcak76@users.noreply.github.com' }
   s.source           = { :git => 'https://github.com/tcak76/j2objc.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
@@ -32,11 +20,22 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'j2objc/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'j2objc' => ['j2objc/Assets/*.png']
-  # }
+  s.prepare_command = <<-CMD
+      echo 'fetching j2objc.framework'
+      curl -OL 'https://diyalog.im/app/pkgs/ios_frameworks/j2objc/1.0.2/j2objc.zip'
+      rm -fr 'j2objc.framework'
+      echo 'unzipping j2objc.framework'
+      unzip -o -q j2objc.zip
+      echo 'cleaning files'
+      rm j2objc.zip
+    CMD
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.preserve_paths = 'j2objc'
+  s.vendored_frameworks =  'j2objc.framework'
+  
+  s.xcconfig = {
+     "SWIFT_INCLUDE_PATHS" => "$(PROJECT_DIR)/Pods/j2objc",
+     "FRAMEWORK_SEARCH_PATHS" => "$(PROJECT_DIR)/Pods/j2objc"
+  }
+  
 end
