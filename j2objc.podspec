@@ -29,5 +29,7 @@ Pod::Spec.new do |s|
       echo 'cleaning files'
       rm j2objc.zip
     CMD
+
+  s.vendored_frameworks = 'j2objc.framework'
   
 end
