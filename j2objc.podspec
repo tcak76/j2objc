@@ -20,5 +20,14 @@ Pod::Spec.new do |s|
 
   s.source_files = 'j2objc/**/*'
   
+  s.prepare_command = <<-CMD
+      echo 'fetching j2objc.framework'
+      curl -OL 'https://diyalog.im/app/pkgs/ios_frameworks/j2objc/1.0.2/j2objc.zip'
+      rm -fr 'j2objc.framework'
+      echo 'unzipping j2objc.framework'
+      unzip -o -q j2objc.zip
+      echo 'cleaning files'
+      rm j2objc.zip
+    CMD
   
 end
