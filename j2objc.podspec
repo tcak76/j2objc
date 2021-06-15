@@ -35,7 +35,9 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'j2objc.framework'
 
   s.xcconfig = {
-     "HEADER_SEARCH_PATHS" => "$(PROJECT_DIR)/Pods/j2objc/**"
+     "FRAMEWORK_SEARCH_PATHS" => "${PODS_ROOT}/j2objc",
+     "HEADER_SEARCH_PATHS" => "${PODS_ROOT}/j2objc"
+	
   }
 
   
